@@ -23,6 +23,26 @@
 #include <camera/CameraParameters.h>
 
 namespace android {
+// 11/9/2012 g60madman - Adding specific keys to communicate with our proprietary libcamera.so.
+// The libcamera.so file used is taken from the Cherry Gingerbread ROM the same libcamera.so
+// used in CM7. To find these missing keys the following command was run against the CM9 Source
+// $ ~/android/prebuilt/linux-x86/toolchain/arm-linux-androideabi-4.4.x/bin/arm-linux-androideabi-objdump -T libcamera.so | grep CameraParameters 
+// then the list generated was cross referenced against this file
+
+const char CameraParameters::KEY_BRIGHTNESS[] = "brightness";
+const char CameraParameters::KEY_MAX_BRIGHTNESS[] = "brightness-max";
+const char CameraParameters::KEY_MIN_BRIGHTNESS[] = "brightness-min";
+const char CameraParameters::KEY_DEF_CONTRAST[] = "contrast-default";
+const char CameraParameters::KEY_DEF_SHARPNESS[] = "sharpness-default";
+const char CameraParameters::KEY_DEF_BRIGHTNESS[] = "brightness-default";
+const char CameraParameters::KEY_DEF_SATURATION[] = "saturation-default";
+const char CameraParameters::KEY_WIDESCREEN[] = "widescreen";
+const char CameraParameters::WIDESCREEN_4_3[] = "4-3";
+const char CameraParameters::WIDESCREEN_5_3[] = "5-3";
+const char CameraParameters::KEY_SUPPORTED_WIDESCREEN[] = "widescreen-values";
+// Needed for Motorola Triumph, removed from #ifdef Samsung
+const char CameraParameters::KEY_SUPPORTED_ISO_MODES[] = "iso-values";
+
 // Parameter keys to communicate between camera application and driver.
 const char CameraParameters::KEY_PREVIEW_SIZE[] = "preview-size";
 const char CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES[] = "preview-size-values";
@@ -124,7 +144,6 @@ const char CameraParameters::KEY_SMOOTH_ZOOM_SUPPORTED[] = "smooth-zoom-supporte
 const char CameraParameters::KEY_FOCUS_DISTANCES[] = "focus-distances";
 const char CameraParameters::KEY_VIDEO_FRAME_FORMAT[] = "video-frame-format";
 #if defined(QCOM_HARDWARE) || defined(EXYNOS4X12_ENHANCEMENTS) || defined(HAVE_ISO)
-const char CameraParameters::KEY_SUPPORTED_ISO_MODES[] = "iso-values";
 const char CameraParameters::KEY_ISO_MODE[] = "iso";
 #endif
 #ifdef QCOM_HARDWARE
