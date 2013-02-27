@@ -556,7 +556,6 @@ public:
     // Proprietaries from CodeAurora use these...
     static const char CONTINUOUS_AF_OFF[] ;
     static const char CONTINUOUS_AF_ON[] ;
-    static const char KEY_CAF[] ;
 
     static const char ISO_AUTO[];
     static const char ISO_HJR[] ;
